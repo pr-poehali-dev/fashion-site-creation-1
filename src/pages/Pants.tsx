@@ -4,13 +4,15 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useCart } from '@/contexts/CartContext';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const products = [
   {
     id: 1,
     name: 'Джинсы Slim Fit',
     price: 5990,
-    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/73b5b983-e93a-4a35-a96f-3f9e126096ac.jpg',
+    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/1934b1ee-69b2-4668-b4f2-d8e0e61f6b98.jpg',
     category: 'Базовая коллекция',
     colors: ['Синий', 'Черный'],
     sizes: ['28', '30', '32', '34', '36']
@@ -19,7 +21,7 @@ const products = [
     id: 2,
     name: 'Брюки Cargo',
     price: 6490,
-    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/73b5b983-e93a-4a35-a96f-3f9e126096ac.jpg',
+    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/1934b1ee-69b2-4668-b4f2-d8e0e61f6b98.jpg',
     category: 'Стрит',
     colors: ['Хаки', 'Черный', 'Серый'],
     sizes: ['S', 'M', 'L', 'XL']
@@ -28,7 +30,7 @@ const products = [
     id: 3,
     name: 'Спортивные штаны',
     price: 4790,
-    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/73b5b983-e93a-4a35-a96f-3f9e126096ac.jpg',
+    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/1934b1ee-69b2-4668-b4f2-d8e0e61f6b98.jpg',
     category: 'Спорт',
     colors: ['Серый', 'Черный', 'Синий'],
     sizes: ['XS', 'S', 'M', 'L', 'XL']
@@ -37,7 +39,7 @@ const products = [
     id: 4,
     name: 'Классические брюки',
     price: 7990,
-    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/73b5b983-e93a-4a35-a96f-3f9e126096ac.jpg',
+    image: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/1934b1ee-69b2-4668-b4f2-d8e0e61f6b98.jpg',
     category: 'Premium',
     colors: ['Черный', 'Темно-синий'],
     sizes: ['46', '48', '50', '52', '54']
@@ -46,6 +48,26 @@ const products = [
 
 const Pants = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string>('');
+  const [selectedColor, setSelectedColor] = useState<string>('');
+  const { addToCart, getTotalItems, setIsCartOpen } = useCart();
+
+  const handleAddToCart = () => {
+    if (selectedProduct && selectedSize && selectedColor) {
+      addToCart({
+        id: selectedProduct.id + 100,
+        name: selectedProduct.name,
+        price: selectedProduct.price,
+        image: selectedProduct.image,
+        size: selectedSize,
+        color: selectedColor
+      });
+      setSelectedProduct(null);
+      setSelectedSize('');
+      setSelectedColor('');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-pink-50/30 to-white">
@@ -54,10 +76,11 @@ const Pants = () => {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3 group">
               <img 
-                src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/88faa3c3-5dae-48d2-8c68-61c7700d0fea.jpg" 
-                alt="VIBE" 
+                src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/d7e64b32-027c-4c58-a185-2accbd3142c0.jpg" 
+                alt="RealTeam" 
                 className="h-10 w-auto transition-transform group-hover:scale-105"
               />
+              <span className="text-xl font-bold">RealTeam</span>
             </Link>
             
             <div className="flex items-center gap-8">
@@ -73,8 +96,18 @@ const Pants = () => {
               <Link to="/shoes" className="text-sm font-medium text-gray-600 hover:text-primary transition-colors">
                 Обувь
               </Link>
-              <Button variant="outline" size="icon" className="rounded-full">
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="rounded-full relative"
+                onClick={() => setIsCartOpen(true)}
+              >
                 <Icon name="ShoppingCart" size={20} />
+                {getTotalItems() > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                    {getTotalItems()}
+                  </Badge>
+                )}
               </Button>
             </div>
           </div>
@@ -112,8 +145,15 @@ const Pants = () => {
                   hoveredId === product.id ? 'opacity-100' : 'opacity-0'
                 }`}>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <Button className="w-full bg-white text-secondary hover:bg-gray-100 font-semibold">
-                      Выбрать размер
+                    <Button 
+                      className="w-full bg-white text-secondary hover:bg-gray-100 font-semibold"
+                      onClick={() => {
+                        setSelectedProduct(product);
+                        setSelectedSize(product.sizes[0]);
+                        setSelectedColor(product.colors[0]);
+                      }}
+                    >
+                      Добавить в корзину
                     </Button>
                   </div>
                 </div>
@@ -145,6 +185,67 @@ const Pants = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>{selectedProduct?.name}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            <img 
+              src={selectedProduct?.image} 
+              alt={selectedProduct?.name}
+              className="w-full aspect-square object-cover rounded-lg"
+            />
+            
+            <div>
+              <label className="text-sm font-semibold mb-2 block">Размер:</label>
+              <div className="flex gap-2 flex-wrap">
+                {selectedProduct?.sizes.map((size) => (
+                  <Button
+                    key={size}
+                    variant={selectedSize === size ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setSelectedSize(size)}
+                  >
+                    {size}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold mb-2 block">Цвет:</label>
+              <div className="flex gap-2 flex-wrap">
+                {selectedProduct?.colors.map((color) => (
+                  <Button
+                    key={color}
+                    variant={selectedColor === color ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setSelectedColor(color)}
+                  >
+                    {color}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="text-2xl font-bold text-secondary">
+                {selectedProduct?.price.toLocaleString('ru-RU')} ₽
+              </span>
+              <Button 
+                size="lg" 
+                className="rounded-full"
+                onClick={handleAddToCart}
+                disabled={!selectedSize || !selectedColor}
+              >
+                Добавить в корзину
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

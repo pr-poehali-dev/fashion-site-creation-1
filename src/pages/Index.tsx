@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useCart } from '@/contexts/CartContext';
 
 const Index = () => {
+  const { getTotalItems, setIsCartOpen } = useCart();
+  
   return (
     <div className="min-h-screen">
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -11,10 +15,11 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3 group">
               <img 
-                src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/88faa3c3-5dae-48d2-8c68-61c7700d0fea.jpg" 
-                alt="VIBE" 
+                src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/d7e64b32-027c-4c58-a185-2accbd3142c0.jpg" 
+                alt="RealTeam" 
                 className="h-10 w-auto transition-transform group-hover:scale-105"
               />
+              <span className="text-xl font-bold">RealTeam</span>
             </Link>
             
             <div className="flex items-center gap-8">
@@ -30,8 +35,18 @@ const Index = () => {
               <Link to="/shoes" className="text-sm font-medium text-gray-600 hover:text-primary transition-colors">
                 Обувь
               </Link>
-              <Button variant="outline" size="icon" className="rounded-full">
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="rounded-full relative"
+                onClick={() => setIsCartOpen(true)}
+              >
                 <Icon name="ShoppingCart" size={20} />
+                {getTotalItems() > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                    {getTotalItems()}
+                  </Badge>
+                )}
               </Button>
             </div>
           </div>
@@ -44,10 +59,10 @@ const Index = () => {
         
         <div className="relative z-10 text-center px-6 animate-fade-in">
           <h1 className="text-7xl md:text-8xl font-bold text-white mb-6 animate-scale-in">
-            VIBE
+            RealTeam
           </h1>
           <p className="text-2xl md:text-3xl text-white/90 mb-12 font-light">
-            Одежда, которая говорит за тебя
+            Одежда для настоящей команды
           </p>
           <div className="flex gap-4 justify-center">
             <Button 
@@ -79,7 +94,7 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary to-purple-700"></div>
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
                 <img 
-                  src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/d964dbd6-eb5e-41be-a6de-8e5c4ce668e8.jpg" 
+                  src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/58050c04-e256-45d0-b664-427ba9ae7c8a.jpg" 
                   alt="Футболки"
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700"
                 />
@@ -96,7 +111,7 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary to-pink-600"></div>
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
                 <img 
-                  src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/73b5b983-e93a-4a35-a96f-3f9e126096ac.jpg" 
+                  src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/1934b1ee-69b2-4668-b4f2-d8e0e61f6b98.jpg" 
                   alt="Штаны"
                   className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700"
                 />
@@ -158,12 +173,12 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <img 
-                src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/88faa3c3-5dae-48d2-8c68-61c7700d0fea.jpg" 
-                alt="VIBE" 
+                src="https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/d7e64b32-027c-4c58-a185-2accbd3142c0.jpg" 
+                alt="RealTeam" 
                 className="h-8 w-auto mb-4"
               />
               <p className="text-gray-400 text-sm">
-                Одежда, которая говорит за тебя
+                Одежда для настоящей команды
               </p>
             </div>
 
@@ -203,7 +218,7 @@ const Index = () => {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 VIBE. Все права защищены.</p>
+            <p>&copy; 2024 RealTeam. Все права защищены.</p>
           </div>
         </div>
       </footer>
