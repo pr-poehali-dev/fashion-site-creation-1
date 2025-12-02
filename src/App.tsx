@@ -14,6 +14,7 @@ import Jackets from "./pages/Jackets";
 import Shorts from "./pages/Shorts";
 import Caps from "./pages/Caps";
 import Bags from "./pages/Bags";
+import Zips from "./pages/Zips";
 import NotFound from "./pages/NotFound";
 import Cart from "./components/Cart";
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/shorts" element={<Shorts />} />
             <Route path="/caps" element={<Caps />} />
             <Route path="/bags" element={<Bags />} />
+            <Route path="/zips" element={<Zips />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

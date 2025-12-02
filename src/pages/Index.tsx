@@ -204,102 +204,35 @@ const Index = () => {
             Выбери свой стиль
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <Link to="/tshirts">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-purple-700"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Shirt" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Футболки</h3>
-                  <p className="text-white/90 text-sm">от 2 990 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/hoodies">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Shirt" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Толстовки</h3>
-                  <p className="text-white/90 text-sm">от 4 990 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/jackets">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-teal-700"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Zap" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Зипки</h3>
-                  <p className="text-white/90 text-sm">от 6 990 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/pants">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary to-pink-600"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Wind" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Штаны</h3>
-                  <p className="text-white/90 text-sm">от 4 790 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/shorts">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-amber-600"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Sun" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Шорты</h3>
-                  <p className="text-white/90 text-sm">от 2 490 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/shoes">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent to-orange-600"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Footprints" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Обувь</h3>
-                  <p className="text-white/90 text-sm">от 6 490 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/caps">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-violet-700"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="CircleUser" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Кепки</h3>
-                  <p className="text-white/90 text-sm">от 1 490 ₽</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link to="/bags">
-              <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-rose-700"></div>
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
-                <div className="relative h-full flex flex-col items-center justify-center text-center p-6">
-                  <Icon name="Backpack" size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold text-white mb-1">Сумки</h3>
-                  <p className="text-white/90 text-sm">от 3 990 ₽</p>
-                </div>
-              </Card>
-            </Link>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[
+              { link: '/tshirts', icon: 'Shirt', title: 'Футболки', price: '2 990', bg: 'from-primary to-purple-700', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/58050c04-e256-45d0-b664-427ba9ae7c8a.jpg' },
+              { link: '/pants', icon: 'Wind', title: 'Штаны', price: '4 790', bg: 'from-secondary to-pink-600', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/1934b1ee-69b2-4668-b4f2-d8e0e61f6b98.jpg' },
+              { link: '/shoes', icon: 'Footprints', title: 'Обувь', price: '6 490', bg: 'from-accent to-orange-600', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/5188df39-9fd1-4896-accf-a62f6de17921.jpg' },
+              { link: '/hoodies', icon: 'Package', title: 'Толстовки', price: '5 990', bg: 'from-blue-600 to-indigo-700', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/c4310033-8623-469d-adc9-84656a4dbac2.jpg' },
+              { link: '/caps', icon: 'Crown', title: 'Кепки', price: '1 990', bg: 'from-purple-600 to-violet-700', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/23b3505b-2986-4bd6-8e92-1f15658ef70d.jpg' },
+              { link: '/bags', icon: 'Briefcase', title: 'Сумки', price: '3 490', bg: 'from-red-600 to-rose-700', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/3e8affa1-762f-495b-976b-1719a74dad47.jpg' },
+              { link: '/shorts', icon: 'Sun', title: 'Шорты', price: '2 490', bg: 'from-yellow-500 to-amber-600', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/636ad6af-07f2-4fb3-a85d-dbda10cb1a1f.jpg' },
+              { link: '/jackets', icon: 'Codesandbox', title: 'Куртки', price: '8 990', bg: 'from-green-600 to-teal-700', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/b4e352dc-0131-4593-aa85-85261f3eddff.jpg' },
+              { link: '/zips', icon: 'Zap', title: 'Зипки', price: '4 990', bg: 'from-cyan-600 to-blue-700', img: 'https://cdn.poehali.dev/projects/448a64db-e1e2-400c-81a1-e7988c3fb78c/files/0eb82b35-9ea9-4c18-9223-a8c24f1b10c4.jpg' },
+            ].map((category) => (
+              <Link key={category.link} to={category.link}>
+                <Card className="group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer h-64">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.bg}`}></div>
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500"></div>
+                  <img 
+                    src={category.img}
+                    alt={category.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="relative h-full flex flex-col items-center justify-center text-center p-6 z-10">
+                    <Icon name={category.icon as any} size={48} className="text-white mb-3 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-2xl font-bold text-white mb-1">{category.title}</h3>
+                    <p className="text-white/90 text-sm">от {category.price} ₽</p>
+                  </div>
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
