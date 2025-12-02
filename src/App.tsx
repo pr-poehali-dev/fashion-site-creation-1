@@ -9,6 +9,11 @@ import Index from "./pages/Index";
 import Tshirts from "./pages/Tshirts";
 import Pants from "./pages/Pants";
 import Shoes from "./pages/Shoes";
+import Hoodies from "./pages/Hoodies";
+import Jackets from "./pages/Jackets";
+import Shorts from "./pages/Shorts";
+import Caps from "./pages/Caps";
+import Bags from "./pages/Bags";
 import NotFound from "./pages/NotFound";
 import Cart from "./components/Cart";
 
@@ -27,6 +32,11 @@ const App = () => (
             <Route path="/tshirts" element={<Tshirts />} />
             <Route path="/pants" element={<Pants />} />
             <Route path="/shoes" element={<Shoes />} />
+            <Route path="/hoodies" element={<Hoodies />} />
+            <Route path="/jackets" element={<Jackets />} />
+            <Route path="/shorts" element={<Shorts />} />
+            <Route path="/caps" element={<Caps />} />
+            <Route path="/bags" element={<Bags />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
